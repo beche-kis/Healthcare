@@ -23,7 +23,7 @@ def run_agent_with_retry(agent_builder, prompt: str, max_retries: int= 3) -> str
         except Exception as e:
             if attempt <max_retries - 1:
                 wait = 2 **attempt
-                print(f"  [Retry {attempt + 1} /{max_retries}]{e.__class__.name__}, waiting{wait}s...")
+                print(f"  [Retry {attempt + 1} /{max_retries}]{e.__class__.__name__}, waiting{wait}s...")
                 time.sleep(wait)
             else:
                 print(f"[Failed]{e.__class__.__name__} after {max_retries} attempts")

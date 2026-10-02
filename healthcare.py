@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from strands import Agent, tool
 from strands.models import BedrockModel 
 from utils import clean_response,run_agent_with_retry,_tool_results
-from Agents import build_symptom_analyzer,build_urgency_classifier,build_urgency_classifier,build_appointment_scheduler,PATIENT_COMPLAINTS,AVAILABLE_SLOTS,SYMPTOM_CONDITIONS 
+from child import  build_symptom_analyzer,build_urgency_classifier,build_urgency_classifier,build_appointment_scheduler,PATIENT_COMPLAINTS,AVAILABLE_SLOTS,SYMPTOM_CONDITIONS 
 
 
 load_dotenv()
@@ -82,11 +82,12 @@ def run_triage_pipeline(patient: dict) ->dict:
 
     
 
-    def main():
+def main():
         """Run the 3 agent healthcare triage system with sample patient complaints."""
 
         for patient in PATIENT_COMPLAINTS:
             print(f"\n '-' *70")
+            print(patient)
             print(f"  Patient: {patient['name']} ({patient['patient_id']}, age {patient['age']})")
             print(f"  Complaint: {patient['complaint']}")
             print(f"{'─' * 70}")
